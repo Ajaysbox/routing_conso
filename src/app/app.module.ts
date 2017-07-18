@@ -9,11 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { ServersComponent } from './servers/servers.component';
 import { ServerDetailsComponent } from './servers/server-details/server-details.component';
 import { EditComponent } from './servers/edit/edit.component';
-import {UsersComponent} from './users/users.component'
+import {UsersComponent} from './users/users.component';
+import { UserComponent } from './users/user/user.component'
 
 const appRoute = [{path:"",component:HomeComponent},
 {path:"servers",component:ServersComponent},
-{path:"users",component:UsersComponent}]
+{path:"users/:id/:name",component:UsersComponent},
+{path:"servers/:id/edit",component:EditComponent},
+]
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ const appRoute = [{path:"",component:HomeComponent},
     ServersComponent,
     ServerDetailsComponent,
     EditComponent,
-    UsersComponent
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

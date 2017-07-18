@@ -2,7 +2,7 @@ export class ServerService{
     private servers = [{
         id:1,
         name:"Production Server",
-        status:"Active"
+        status:"Online"
     },
     {
         id:2,
@@ -12,7 +12,7 @@ export class ServerService{
     {
         id:3,
         name:"Development Server",
-        status:"Active"
+        status:"Online"
     }];
 
     getServers(){
@@ -22,6 +22,13 @@ export class ServerService{
         return this.servers[id];
     };
     updateServer(id:number,serverInfo:{name:string,status:string}){
-        
+        const server = this.servers.find((servr)=>{
+            return servr.id === id;
+        });
+        console.log("server : "+server.name)
+        if(server){
+            server.name = serverInfo.name;
+            server.status = serverInfo.status;
+        }
     }
 }

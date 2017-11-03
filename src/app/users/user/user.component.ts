@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
+import { UserService } from "app/users/user.service";
 
 @Component({
   selector: 'app-user',
@@ -8,22 +9,22 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-user:{id:number,name:string};
-paramSubscription:Subscription;
-  constructor(private route:ActivatedRoute) { }
+id:number;
+user:{id:number,name:string}
+  constructor(private route:ActivatedRoute,private userService:UserService) { }
 
 
   ngOnInit() {
-    this.user = {
-      id:this.route.snapshot.params['id'],
-      name:this.route.snapshot.params['name']
-    };
-    this.paramSubscription = this.route.params.subscribe((params:Params)=>{
-      this.user = {
-        id:params['id'],
-        name:params['name']
-      }
-    })
+
+      this.id = this.route.snapshot.params['id'];
+      this.user = this.userService.getUser(this.id-1);
+      this.route.params.subscribe((params:Params)=>{
+
+        this.id = params['id'];
+        this.user = this.userService.getUser(this.id-1);
+
+    });
+
   }
 
 }

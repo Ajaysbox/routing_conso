@@ -1,7 +1,7 @@
 import { ServerService } from './servers/server.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import{RouterModule} from '@angular/router';
+
 import{FormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
@@ -11,12 +11,13 @@ import { ServerDetailsComponent } from './servers/server-details/server-details.
 import { EditComponent } from './servers/edit/edit.component';
 import {UsersComponent} from './users/users.component';
 import { UserComponent } from './users/user/user.component'
+import { UserService } from "app/users/user.service";
+import { PageNotFoundComponent } from "app/page-not-found/page-not-found.component";
+import { AppRoutingModule } from "app/app-routing.module";
+import { AuthGaurd } from "app/auth-gaurd.service";
+import { AuthService } from "app/auth.service";
 
-const appRoute = [{path:"",component:HomeComponent},
-{path:"servers",component:ServersComponent},
-{path:"users/:id/:name",component:UsersComponent},
-{path:"servers/:id/edit",component:EditComponent},
-]
+
 
 @NgModule({
   declarations: [
@@ -26,14 +27,16 @@ const appRoute = [{path:"",component:HomeComponent},
     ServerDetailsComponent,
     EditComponent,
     UsersComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoute)
+    AppRoutingModule
+  
   ],
-  providers: [ServerService],
+  providers: [ServerService,UserService,AuthService,AuthGaurd],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

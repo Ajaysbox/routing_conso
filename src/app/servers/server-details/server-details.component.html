@@ -1,2 +1,6 @@
+<h4 *ngIf="allowEdit===false">You are not allowed to Edit this server</h4>
+<div *ngIf="allowEdit===true">
 <h4>{{server.name}}</h4>
 <p>{{server.status}}</p>
+<button class="btn btn-primary"(click)="editServer()"> Edit Server</button>
+</div>

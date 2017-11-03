@@ -1,4 +1,6 @@
 <p>Welcome to the Servers Management Page!</p>
 <button class="btn btn-primary" (click)="loadServers()">Load Servers</button>
-<a [routerLink]="['/users',10,'Ajay']">Load Users</a>
+<a [routerLink]="['/users',10,'Ajay']" [queryParams]="{edit:1}" fragment="loading">Load Users</a>
 <a (click)="loadServer(1)">Load Server 1</a>
+<button (click)="login()">Login</button>
+<button (click)="logOut()">Log Out</button>

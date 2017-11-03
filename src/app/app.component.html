@@ -4,6 +4,8 @@
     <div class="col-md-8 col-xs-12 col-sm-4">
       <ul class="nav nav-tabs">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <!--routerLinkActiveOptions is used for identifying '/' exactly so as to update the tabs accordingly
+          else '/' can be part of all the URL's-->
           <a routerLink="/">Home</a>
         </li>
         <li routerLinkActive="active">

@@ -2,8 +2,8 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a 
-      [routerLink]="['/servers',5,'edit']"
-      [queryParams]="{allowEdit:1}"
+      [routerLink]="['/servers',server.id]"
+      [queryParams]="{allowEdit:server.id===1?1:0}"
       fragment="loading"
       class="list-group-item" 
       *ngFor="let server of servers">
@@ -14,7 +14,8 @@
   <p>use of route params</p>
  <p>use of query params and fragment, using router link and through code</p>
 </div>
- <app-server-details></app-server-details>
- <app-edit></app-edit>
-
- <a [routerLink]="['/users',5,'Sanjay']">Load users</a>
+<router-outlet></router-outlet>
+ <!--<app-server-details></app-server-details>
+ <app-edit></app-edit>-->
+<!--
+ <a [routerLink]="['/users',5,'Sanjay']">Load users</a>-->
